@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>au.org.ala</groupId>
     <artifactId>biocache-jms</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>biocache-jms</name>
     <description> 
@@ -17,7 +17,7 @@
      
 <!-- AN SCM entry that points to the SVN directory that contains the pom file for the project  -->
     <scm>
-        <developerConnection>scm:svn:https://ala-portal.googlecode.com/svn/tags/biocache-jms-1.0</developerConnection>
+        <developerConnection>scm:svn:https://ala-portal.googlecode.com/svn/trunk/biocache-jms/</developerConnection>
     </scm>
    
     <organization>
