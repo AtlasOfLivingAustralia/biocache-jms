@@ -24,7 +24,6 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import au.org.ala.biocache.FullRecord;
 import au.org.ala.biocache.Store;
 import org.codehaus.jackson.type.TypeReference;
 
@@ -244,59 +243,6 @@ public class JmsMessageListener implements MessageListener {
         }
     }
 
-	/**
-	 * 
-	 * @param sighting
-	 * @return
-	 * @deprecated Batch loading is based on Maps rather than FullRecords.
-	 */
-	@Deprecated
-	private FullRecord populateFullRecord(Sighting sighting){
-    	FullRecord fullRecord = new FullRecord();
-    	if(sighting == null){
-    		return fullRecord;
-    	}
-    	fullRecord.getOccurrence().setOccurrenceID(sighting.getGuid());
-    	fullRecord.getOccurrence().setRecordedBy(sighting.getUserID());
-    	fullRecord.getClassification().setKingdom(sighting.getKingdom());
-    	fullRecord.getClassification().setFamily(sighting.getFamily());
-    	fullRecord.getClassification().setScientificName(sighting.getScientificName());
-    	fullRecord.getClassification().setVernacularName(sighting.getVernacularName());
-    	fullRecord.getClassification().setTaxonConceptID(sighting.getTaxonConceptGuid());
-    	
-    	if(isHasAssociatedMedia() && sighting.getAssociatedMedia() != null){
-    		StringBuffer urls = new StringBuffer();
-    		for(int i = 0; i < sighting.getAssociatedMedia().length; i++){               
-                //download the media
-    			urls.append(sighting.getAssociatedMedia()[i]);
-    			if(i < (sighting.getAssociatedMedia().length - 1)){
-    				urls.append("; ");
-    			}
-    		}
-    		fullRecord.occurrence().setAssociatedMedia(urls.toString());
-    	}
-    	fullRecord.occurrence().setIndividualCount("" + sighting.getIndividualCount());
-    	fullRecord.occurrence().setOccurrenceRemarks(sighting.getOccurrenceRemarks());
-    	
-     	fullRecord.event().setEventDate(sighting.getEventDate());
-    	fullRecord.event().setEventTime(sighting.getEventTime());
-    	
-    	fullRecord.location().setDecimalLatitude("" + sighting.getDecimalLatitude());
-    	fullRecord.location().setDecimalLongitude("" + sighting.getDecimalLongitude());
-
-        if(sighting.getGeodeticDatum() != null)
-            fullRecord.location().setGeodeticDatum(sighting.getGeodeticDatum());
-
-    	fullRecord.location().setLocality(sighting.getLocality());
-    	if(sighting.getCoordinateUncertaintyInMeters() != null){
-    		fullRecord.location().setCoordinateUncertaintyInMeters("" + sighting.getCoordinateUncertaintyInMeters());
-    	}    	
-     	
-    	fullRecord.attribution().setDataResourceUid(getDataResourceUidForSighting(sighting));
-    	    	        	
-    	return fullRecord;
-	}
-
     protected String getDataResourceUidForSighting(Map<String,String> propertyMap){
         if(propertyMap.get("dataResourceUid") !=null){
           return (String) propertyMap.get("dataResourceUid");
@@ -311,28 +257,6 @@ public class JmsMessageListener implements MessageListener {
         return defaultDataResourceUid;
     }
 
-	/**
-	 * 
-	 * @param sighting
-	 * @deprecated Batch processing occurs on List of Maps
-	 */
-	@Deprecated
-	private void addUpdateOccRecord(Sighting sighting) {
-		FullRecord fullRecord = populateFullRecord(sighting);
-        List<String> identifyingTerms = new ArrayList<String>();
-        identifyingTerms.add(sighting.getGuid());
-		Store.loadRecord(getDataResourceUidForSighting(sighting), fullRecord, identifyingTerms, true);
-	}
-
-	/**
-	 * 
-	 * @param occId
-	 * @deprecated Batch deleting occurs on a list of 
-	 */
-	@Deprecated	
-	private void deleteOccRecord(String occId) {
-		Store.deleteRecord(occId);
-	}
 	
 	private class BatchThread extends Thread {
 
