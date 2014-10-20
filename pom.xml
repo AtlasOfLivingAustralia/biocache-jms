@@ -30,9 +30,15 @@
 	    <dependency>
 	      <groupId>au.org.ala</groupId>
 	      <artifactId>biocache-store</artifactId>
-	      <version>1.1-SNAPSHOT</version>
+	      <version>1.1</version>
 	    </dependency>
-		
+
+	    <dependency>
+	      <groupId>org.gbif</groupId>
+	      <artifactId>dwca-reader</artifactId>
+	      <version>1.14</version>
+	    </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -167,6 +173,18 @@
 
     <repositories>
         <repository>
+            <id>org.gbif</id>
+            <name>gbif</name>
+            <url>http://repository.gbif.org/content/repositories/releases</url>
+        </repository>
+
+        <repository>
+            <id>org.geotools</id>
+            <name>geotools</name>
+            <url>http://repo.geomajas.org/nexus/content/repositories/geotools</url>
+        </repository>
+
+        <repository>
             <id>ala-repository</id>
             <name>ala-repository</name>
             <url>http://maven.ala.org.au/repository</url>
@@ -189,12 +207,16 @@
         </repository>
     </repositories>
     
-	<distributionManagement>
-	    <downloadUrl>https://maven.ala.org.au/repository</downloadUrl>
-	    <repository>
-	      <uniqueVersion>false</uniqueVersion>
-	      <id>ala-repository</id>
-	      <url>${ala.repository.url}</url>
-	    </repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>ala-repo</id>
+            <name>Internal Releases</name>
+            <url>http://ala-wonder.it.csiro.au/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ala-repo</id>
+            <name>Internal Releases</name>
+            <url>http://ala-wonder.it.csiro.au/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
