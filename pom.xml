@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>au.org.ala</groupId>
+        <artifactId>ala-parent-pom</artifactId>
+        <version>1.0</version>
+    </parent>
+
     <groupId>au.org.ala</groupId>
     <artifactId>biocache-jms</artifactId>
     <version>1.1-SNAPSHOT</version>
@@ -14,10 +21,11 @@
         <spring.version>3.0.4.RELEASE</spring.version>
         <junit.version>4.7.0</junit.version>
     </properties>
-     
-<!-- AN SCM entry that points to the SVN directory that contains the pom file for the project  -->
+
     <scm>
-        <developerConnection>scm:svn:https://ala-portal.googlecode.com/svn/trunk/biocache-jms/</developerConnection>
+        <connection>scm:git:git@github.com:AtlasOfLivingAustralia/biocache-jms.git</connection>
+        <url>https://github.com/AtlasOfLivingAustralia/biocache-jms</url>
+        <developerConnection>scm:git:git@github.com:AtlasOfLivingAustralia/biocache-jms.git</developerConnection>
     </scm>
    
     <organization>
@@ -32,6 +40,12 @@
 	      <artifactId>biocache-store</artifactId>
 	      <version>1.1</version>
 	    </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
 	    <dependency>
 	      <groupId>org.gbif</groupId>
@@ -81,33 +95,25 @@
 			<artifactId>commons-pool</artifactId> 
 			<version>1.5.5</version> 
 		</dependency>
-		
-		<!-- junit test -->		   	        
+
         <dependency>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-spring</artifactId>
-    		<version>3.6</version>
+            <version>3.6</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>com.springsource.javax.management.j2ee</artifactId>
-            <version>1.0.1</version>
-        </dependency>        
+		
+		<!-- junit test -->		   	        
+
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.test</artifactId>
+            <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
-        </dependency>        
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
         </dependency>
         <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>com.springsource.org.junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         
@@ -170,53 +176,4 @@
    
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>org.gbif</id>
-            <name>gbif</name>
-            <url>http://repository.gbif.org/content/repositories/releases</url>
-        </repository>
-
-        <repository>
-            <id>org.geotools</id>
-            <name>geotools</name>
-            <url>http://repo.geomajas.org/nexus/content/repositories/geotools</url>
-        </repository>
-
-        <repository>
-            <id>ala-repository</id>
-            <name>ala-repository</name>
-            <url>http://maven.ala.org.au/repository</url>
-        </repository>
-
-        <repository>
-            <id>com.springsource.repository.bundles.release</id>
-            <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-            <url>http://repository.springsource.com/maven/bundles/release</url>
-        </repository>
-        <repository>
-            <id>com.springsource.repository.bundles.external</id>
-            <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-            <url>http://repository.springsource.com/maven/bundles/external</url>
-        </repository> 
-        <repository>
-            <id>spring.maven.milestone</id>
-            <name>Spring Milestone Maven Repo</name>
-            <url>http://repository.springsource.com/maven/bundles/milestone</url>
-        </repository>
-    </repositories>
-    
-    <distributionManagement>
-        <repository>
-            <id>ala-repo</id>
-            <name>Internal Releases</name>
-            <url>http://ala-wonder.it.csiro.au/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ala-repo</id>
-            <name>Internal Releases</name>
-            <url>http://ala-wonder.it.csiro.au/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
