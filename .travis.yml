@@ -1,11 +1,14 @@
 language: java
+dist:
+  - trusty
 jdk:
-- oraclejdk7
+  - oraclejdk8
+  - oraclejdk9
 branches:
   only:
   - master
 before_install:
-- mkdir -p ~/.m2; wget -q -O ~/.m2/settings.xml https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_maven_settings.xml
+  - mkdir -p ~/.m2; wget -q -O ~/.m2/settings.xml https://raw.githubusercontent.com/AtlasOfLivingAustralia/travis-build-configuration/master/travis_maven_settings.xml
 script: mvn clean install deploy
 env:
   global:
