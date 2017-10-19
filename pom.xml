@@ -49,8 +49,8 @@
 
 	    <dependency>
 	      <groupId>org.gbif</groupId>
-	      <artifactId>dwca-reader</artifactId>
-	      <version>1.14</version>
+	      <artifactId>dwca-io</artifactId>
+	      <version>1.31</version>
 	    </dependency>
 
         <dependency>
