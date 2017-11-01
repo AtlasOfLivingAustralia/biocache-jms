@@ -18,7 +18,7 @@
     </description>
     
     <properties>
-        <spring.version>3.0.4.RELEASE</spring.version>
+        <spring.version>3.2.18.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -82,24 +82,19 @@
         <!-- Active MQ -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-core</artifactId>
-            <version>5.4.2</version>
+            <artifactId>activemq-all</artifactId>
+            <version>5.15.2</version>
         </dependency>
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-pool</artifactId>
-			<version>5.3.2</version>
-    	</dependency>
     	<dependency>
-			<groupId>commons-pool</groupId> 
-			<artifactId>commons-pool</artifactId> 
-			<version>1.5.5</version> 
-		</dependency>
+            <groupId>commons-pool</groupId> 
+            <artifactId>commons-pool</artifactId> 
+            <version>1.6</version> 
+        </dependency>
 
         <dependency>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-spring</artifactId>
-            <version>3.6</version>
+            <version>3.18</version>
         </dependency>
 		
 		<!-- junit test -->		   	        
@@ -121,7 +116,7 @@
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
-            <version>1.7.0</version>
+            <version>1.9.13</version>
         </dependency>	 	
     </dependencies>
         
