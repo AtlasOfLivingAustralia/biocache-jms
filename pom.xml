@@ -5,7 +5,7 @@
     <parent>
         <groupId>au.org.ala</groupId>
         <artifactId>ala-parent-pom</artifactId>
-        <version>5</version>
+        <version>6-SNAPSHOT</version>
     </parent>
 
     <groupId>au.org.ala</groupId>
@@ -19,7 +19,6 @@
     
     <properties>
         <spring.version>3.2.18.RELEASE</spring.version>
-        <junit.version>4.12</junit.version>
     </properties>
 
     <scm>
@@ -90,6 +89,11 @@
             <artifactId>commons-pool</artifactId> 
             <version>1.6</version> 
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.4.3</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.xbean</groupId>
@@ -108,7 +112,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         

@@ -23,6 +23,7 @@ import javax.jms.TextMessage;
 
 import org.ala.jms.service.JmsMessageListener;
 import org.apache.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +38,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  */
 
-
+@Ignore("Needs work")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"/activemq-producer_context.xml"})
-public class JmsMessageProducer {
+public class JmsMessageProducerTest {
 
-    private static final Logger logger = Logger.getLogger(JmsMessageProducer.class);
+    private static final Logger logger = Logger.getLogger(JmsMessageProducerTest.class);
 
     @Autowired
     private JmsTemplate template = null;
